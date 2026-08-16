@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Serviger Holding — building distinctive businesses across automotive, beauty, real estate and digital commerce.">
+<title>LMW Sovereign Holding — Building What Comes Next</title>
+
+<style>
+:root{
+  --black:#050505;--black2:#0b0b0a;--white:#f5f3ee;
+  --muted:#8d8981;--line:rgba(255,255,255,.12);
+  --gold:#c6a56b;--gold2:#e0c58f;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:Arial,Helvetica,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.navbar{
+ position:fixed;top:0;left:0;width:100%;height:82px;z-index:100;
+ display:flex;align-items:center;justify-content:space-between;padding:0 5%;
+ border-bottom:1px solid transparent;transition:.35s
+}
+.navbar.scrolled{background:rgba(5,5,5,.88);backdrop-filter:blur(18px);border-color:var(--line)}
+.logo{font-family:var(--serif);font-size:19px;letter-spacing:4px}
+.logo small{display:block;margin-top:4px;font-family:var(--sans);font-size:6px;letter-spacing:3px;color:#77736b}
+.nav{display:flex;gap:28px;align-items:center}
+.nav a{font-size:8px;text-transform:uppercase;letter-spacing:1.2px;color:#aaa69d;transition:.25s}
+.nav a:hover{color:var(--gold2)}
+.nav-cta{padding:11px 17px;border:1px solid rgba(198,165,107,.6);color:var(--gold2)!important}
+.menu{display:none;background:none;border:1px solid var(--line);color:white;width:42px;height:42px}
+
+.hero{
+ min-height:100svh;position:relative;display:flex;align-items:center;padding:130px 8% 100px;
+ background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.48) 48%,rgba(0,0,0,.2)),
+ linear-gradient(0deg,rgba(0,0,0,.82),transparent 50%),url("90.webp") center/cover no-repeat
+}
+.hero-content{max-width:780px;position:relative;z-index:2}
+.kicker,.eyebrow{color:var(--gold2);font-size:8px;letter-spacing:4px;text-transform:uppercase}
+.hero h1{margin-top:25px;font-family:var(--serif);font-size:clamp(54px,8vw,115px);line-height:.86;font-weight:400;letter-spacing:-5px}
+.hero h1 span,.serif-title span{color:var(--gold2)}
+.hero p{max-width:590px;margin-top:32px;color:#aaa69e;font-family:var(--serif);font-size:18px;line-height:1.7}
+.hero-meta{margin-top:42px;display:flex;gap:20px;color:#77736c;font-size:8px;letter-spacing:2px;text-transform:uppercase}
+.hero-meta strong{color:#ddd2bd;font-weight:400}
+.btn{display:inline-flex;margin-top:34px;padding:15px 27px;border:1px solid rgba(198,165,107,.7);color:var(--gold2);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;transition:.3s}
+.btn:hover{background:var(--gold);color:#090806;transform:translateY(-2px)}
+
+.section{padding:130px 8%;background:var(--black)}
+.section.light{background:#f3f1eb;color:#151515}
+.section-inner{max-width:1250px;margin:auto}
+.eyebrow{margin-bottom:25px}
+.serif-title{font-family:var(--serif);font-size:clamp(45px,6vw,88px);font-weight:400;line-height:.95;letter-spacing:-3px}
+.intro{max-width:720px;margin-top:35px;color:#88847c;font-family:var(--serif);font-size:18px;line-height:1.8}
+
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:70px}
+.company-card{
+ min-height:480px;padding:45px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;
+ overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.07)
+}
+.company-card:before{content:"";position:absolute;inset:0;background:var(--card-bg) center/cover;opacity:.43;transition:1s}
+.company-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.96),rgba(0,0,0,.08) 75%)}
+.company-card:hover:before{transform:scale(1.06);opacity:.58}
+.card-content{position:relative;z-index:2}
+.card-number{position:absolute;top:30px;right:35px;color:rgba(255,255,255,.35);font-family:var(--serif);font-size:30px}
+.card-type{color:var(--gold2);font-size:7px;letter-spacing:3px;text-transform:uppercase;margin-bottom:13px}
+.card-title{font-family:var(--serif);font-size:42px;font-weight:400}
+.card-text{max-width:450px;margin-top:14px;color:#aaa69f;font-family:var(--serif);font-size:14px;line-height:1.6}
+.card-link{margin-top:24px;display:inline-block;color:#eee;font-size:8px;letter-spacing:1.5px;text-transform:uppercase}
+.card-link span{color:var(--gold2);margin-left:10px}
+
+.manifesto{
+ min-height:70vh;display:flex;align-items:center;
+ background:radial-gradient(circle at 75% 50%,rgba(198,165,107,.12),transparent 30%),#090908
+}
+.manifesto h2{font-family:var(--serif);font-weight:400;font-size:clamp(60px,11vw,170px);line-height:.78;letter-spacing:-7px}
+.outline{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.25)}
+
+.founder{display:grid;grid-template-columns:1fr 1fr;gap:10vw;align-items:end}
+.founder-name{font-family:var(--serif);font-size:clamp(65px,8vw,130px);line-height:.8;letter-spacing:-5px}
+.founder-name span{color:var(--gold2)}
+.founder-copy p{font-family:var(--serif);color:#929087;line-height:1.8;font-size:16px;margin-top:20px}
+.signature{margin-top:40px;padding-top:17px;border-top:1px solid var(--line);color:#ddd2bd;font-size:9px;letter-spacing:3px}
+.signature small{display:block;margin-top:8px;color:#66625b;letter-spacing:1px}
+
+.ecosystem{display:flex;flex-direction:column;align-items:center;margin-top:70px}
+.hub{width:190px;height:190px;border:1px solid rgba(198,165,107,.65);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle,rgba(198,165,107,.13),transparent 70%)}
+.hub strong{font-family:var(--serif);font-size:23px;font-weight:400}.hub small{display:block;color:#77736b;font-size:7px;letter-spacing:2px;margin-top:8px}
+.hub-line{height:55px;width:1px;background:linear-gradient(var(--gold),rgba(198,165,107,.1))}
+.ecosystem-grid{display:grid;grid-template-columns:repeat(4,1fr);width:100%;gap:14px}
+.eco{padding:30px 20px;border:1px solid rgba(20,20,20,.15);text-align:center;transition:.3s}
+.eco:hover{border-color:rgba(198,165,107,.55);transform:translateY(-4px)}
+.eco b{font-family:var(--serif);font-size:18px;font-weight:400}.eco span{display:block;margin-top:8px;color:#77736b;font-size:7px;letter-spacing:1.5px;text-transform:uppercase}
+
+.contact{text-align:center;padding-bottom:150px}.contact p{max-width:650px;margin:25px auto;color:#88847c;font-family:var(--serif);line-height:1.8}
+
+.footer{padding:70px 8% 30px;background:#030303;border-top:1px solid var(--line)}
+.footer-grid{max-width:1250px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
+.footer-brand{font-family:var(--serif);font-size:27px;letter-spacing:4px}
+.footer-brand p{max-width:360px;margin-top:20px;color:#66635e;font-size:11px;line-height:1.7}
+.footer h4{color:#aaa69e;font-size:7px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+.footer a{display:block;color:#66635e;font-size:10px;margin:11px 0;transition:.2s}.footer a:hover{color:var(--gold2)}
+.footer-bottom{max-width:1250px;margin:55px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#4f4c47;font-size:8px}
+
+.mobile-menu{position:fixed;inset:0;z-index:200;background:#050505;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:25px;opacity:0;pointer-events:none;transition:.35s}
+.mobile-menu.active{opacity:1;pointer-events:auto}.mobile-menu a{font-family:var(--serif);font-size:26px}
+.close{position:absolute;top:25px;right:25px;background:none;border:0;color:white;font-size:30px}
+.reveal{opacity:0;transform:translateY(25px);transition:1s ease}.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:850px){
+ .nav{display:none}.menu{display:block}.hero{padding-left:7%}
+ .portfolio-grid,.founder{grid-template-columns:1fr}.ecosystem-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+ .hero h1{letter-spacing:-3px}.hero p{font-size:15px}.portfolio-grid{grid-template-columns:1fr}
+ .company-card{min-height:390px;padding:30px}.ecosystem-grid,.footer-grid{grid-template-columns:1fr}
+ .footer-bottom{flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<link rel="icon" href="53.png" type="image/png">
+
+<body>
+<header class="navbar" id="navbar">
+ <a class="logo" href="#home">SOVEREIGN<small>HOLDING COMPANY</small></a>
+ <nav class="nav">
+  <a href="#about">About</a><a href="#companies">Companies</a><a href="dog.html">Leadership</a>
+  <a href="lmw-sovereign-ls v8.html">Projects</a><a href="prees.html">Press</a><a class="nav-cta" href="#contact">Contact</a>
+ </nav>
+ <button class="menu" id="openMenu">☰</button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+ <button class="close" id="closeMenu">×</button>
+ <a href="#about">About</a><a href="#companies">Companies</a><a href="#founder">Leadership</a>
+ <a href="#projects">Projects</a><a href="press.html">Press</a><a href="#contact">Contact</a>
+</div>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-content reveal">
+  <div class="kicker">Sovereign Holding Company</div>
+  <h1>Building<br><span>what comes</span><br>next.</h1>
+  <p>A diversified holding company building distinctive businesses across automotive, beauty, real estate and digital commerce.</p>
+  <a href="#companies" class="btn">Explore Our Companies</a>
+  <div class="hero-meta"><span>Founder & Chairman</span><strong>Ateş Karhan</strong></div>
+ </div>
+</section>
+
+<section class="section light" id="about">
+ <div class="section-inner reveal">
+  <div class="eyebrow">About</div>
+  <h2 class="serif-title">One holding.<br><span>Multiple industries.</span></h2>
+  <p class="intro">Sovereign Holding develops and supports ambitious businesses with distinctive identities, long-term value and global ambition. Its portfolio spans automotive, beauty, real estate and digital commerce.</p>
+ </div>
+</section>
+
+<section class="section" id="companies">
+ <div class="section-inner reveal">
+  <div class="eyebrow">Portfolio</div>
+  <h2 class="serif-title">Our<br><span>companies.</span></h2>
+  <div class="portfolio-grid">
+
+   <article class="company-card" style="--card-bg:url('93.png')">
+    <div class="card-number"></div><div class="card-content">
+     <div class="card-type">Luxury Automotive</div><h3 class="card-title">LMW Automotive</h3>
+     <p class="card-text">Engineering a new expression of automotive grandeur, led by the LMW Sovereign LS8.</p>
+     <a class="card-link" href="lmw-sovereign-v2.html">Visit LMW Automotive <span>→</span></a>
+    </div>
+   </article>
+
+   <article class="company-card" style="--card-bg:url('98.png')">
+    <div class="card-number"></div><div class="card-content">
+     <div class="card-type">Beauty & Personal Care</div><h3 class="card-title">Dermiva Beauty Brand</h3>
+     <p class="card-text">Modern beauty brands combining product, design and a refined customer experience.</p>
+     <a class="card-link" href="index(1).html">Explore Beauty <span>→</span></a>
+    </div>
+   </article>
+
+   <article class="company-card" style="--card-bg:url('101.png')">
+    <div class="card-number"></div><div class="card-content">
+     <div class="card-type">Property & Development</div><h3 class="card-title">LS Real Estate</h3>
+     <p class="card-text">Developing exceptional spaces with a focus on quality, design and long-term value.</p>
+     <a class="card-link" href="serviger-real-estate-about.html">Explore Real Estate <span>→</span></a>
+    </div>
+   </article>
+
+   <article class="company-card" style="--card-bg:url('100.png')">
+    <div class="card-number"></div><div class="card-content">
+     <div class="card-type">Digital Commerce</div><h3 class="card-title">Marketplace</h3>
+     <p class="card-text">A modern digital commerce ecosystem connecting products, brands and customers.</p>
+     <a class="card-link" href="marketplace.html">Visit Marketplace <span>→</span></a>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<section class="section manifesto" id="projects">
+ <div class="section-inner reveal">
+  <div class="eyebrow">Vision</div>
+  <h2>BUILD.<br><span class="outline">CREATE.</span><br>EXPAND.</h2>
+ </div>
+</section>
+
+<section class="section" id="founder">
+ <div class="section-inner reveal">
+  <div class="eyebrow">Leadership</div>
+  <div class="founder">
+   <div><div class="founder-name">Ateş <br><span>Karhan.</span></div></div>
+   <div class="founder-copy">
+    <div class="card-type">Founder & Chairman</div>
+    <p style="font-family:var(--serif);font-size:32px;color:#e8e4db;line-height:1.15">Building ambitious businesses with a long-term vision.</p>
+    <p>Ateş Karhan leads Sovereign Holding with a focus on entrepreneurship, brand creation, innovation and the development of businesses designed for international growth.</p>
+    <div class="signature">Ateş Karhan<small>FOUNDER · SOVEREIGN HOLDING</small></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section light" id="ecosystem">
+ <div class="section-inner reveal">
+  <div class="eyebrow">Ecosystem</div>
+  <h2 class="serif-title">A connected<br><span>portfolio.</span></h2>
+  <div class="ecosystem">
+   <div class="hub"><div><strong>SOVEREIGN</strong><small>HOLDING COMPANY</small></div></div>
+   <div class="hub-line"></div>
+   <div class="ecosystem-grid">
+    <div class="eco"><b>LMW Automotive</b><span>Luxury Mobility</span></div>
+    <div class="eco"><b>Beauty</b><span>Personal Care</span></div>
+    <div class="eco"><b>Real Estate</b><span>Development</span></div>
+    <div class="eco"><b>Marketplace</b><span>Digital Commerce</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="press">
+ <div class="section-inner reveal">
+  <div class="eyebrow">Press & Media</div>
+  <h2 class="serif-title">The story<br><span>continues.</span></h2>
+  <p class="intro">Corporate news, brand announcements, media information and partnership opportunities from Sovereign Holding and its portfolio.</p>
+  <a href="press.html" class="btn">Press & Media</a>
+ </div>
+</section>
+
+<section class="section contact" id="contact">
+ <div class="section-inner reveal">
+  <div class="eyebrow"> Contact</div>
+  <h2 class="serif-title">Let's build<br><span>what's next.</span></h2>
+  <p>For corporate partnerships, business development, media, investment enquiries and general information.</p>
+  <a href="mailto:contact@sovereignsholding.com" class="btn">Contact Serviger Holding</a>
+ </div>`
+</section>
+</main>
+
+<footer class="footer">
+ <div class="footer-grid">
+  <div><div class="footer-brand">SOVEREIGN</div><p>A diversified holding company building distinctive businesses across automotive, beauty, real estate and digital commerce.</p></div>
+  <div><h4>Companies</h4><a href="lmw-sovereign-ls v8.html">LMW Automotive</a><a href="dermevia.html">Beauty</a><a href="realestate.html">Real Estate</a><a href="#marketplace.html">Marketplace</a></div>
+  <div><h4>Company</h4><a href="#about">About</a><a href="mehmetsalar.html">Leadership</a><a href="#projects">Projects</a><a href="booking.html">Press</a><a href="contact.html">Contact</a></div>
+  <div><h4>Social</h4><a href="https://instagram.com/YOUR_INSTAGRAM_ID" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/YOUR_X_ID" target="_blank" rel="noopener">X / Twitter</a><a href="https://linkedin.com/company/YOUR_LINKEDIN_ID" target="_blank" rel="noopener">LinkedIn</a></div>
+ </div>
+ <div class="footer-bottom"><span>© 2026 Sovereign Holding Company. All rights reserved.</span><span>Founded by Ateş Karhan.</span></div>
+</footer>
+
+<script>
+const navbar=document.getElementById("navbar");
+window.addEventListener("scroll",()=>navbar.classList.toggle("scrolled",window.scrollY>40));
+
+const reveals=document.querySelectorAll(".reveal");
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}
+ })
+},{threshold:.12});
+reveals.forEach(el=>observer.observe(el));
+
+const mobileMenu=document.getElementById("mobileMenu");
+document.getElementById("openMenu").onclick=()=>mobileMenu.classList.add("active");
+document.getElementById("closeMenu").onclick=()=>mobileMenu.classList.remove("active");
+document.querySelectorAll(".mobile-menu a").forEach(link=>link.addEventListener("click",()=>mobileMenu.classList.remove("active")));
+</script>
+</body>
+</html>
