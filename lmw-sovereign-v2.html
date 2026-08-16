@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080807">
+<title>LMW Sovereign LS8 — LMW BY Sovereign Holding Company </title>
+<link rel="icon" href="53.png" type="image/png">
+
+<style>
+:root{
+  --black:#070706;
+  --ink:#11110f;
+  --white:#f7f5f0;
+  --muted:#77756f;
+  --line:rgba(255,255,255,.14);
+  --gold:#c8a76b;
+  --gold-light:#e1c997;
+  --cream:#f5f3ee;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:Arial,Helvetica,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+
+/* ---------- NAVIGATION ---------- */
+.site-nav{
+  position:fixed;inset:0 0 auto 0;height:78px;z-index:100;
+  display:grid;grid-template-columns:190px 1fr 190px;align-items:center;
+  padding:0 3.2%;border-bottom:1px solid transparent;
+  transition:.45s ease;
+}
+.site-nav.scrolled{background:rgba(7,7,6,.86);backdrop-filter:blur(18px);border-color:var(--line)}
+.brand{display:flex;align-items:center;gap:11px}
+.brand-mark{width:31px;height:38px;border:1px solid var(--gold);display:grid;place-items:center;clip-path:polygon(50% 0,100% 12%,100% 72%,50% 100%,0 72%,0 12%);font-size:10px;color:var(--gold-light);letter-spacing:1px}
+.brand-name{font-size:16px;letter-spacing:4px;font-weight:400;line-height:1}
+.brand-sub{display:block;margin-top:5px;font-size:6px;letter-spacing:2.8px;color:#aaa69d}
+.nav-links{display:flex;justify-content:center;align-items:center;gap:29px}
+.nav-links a{font-size:8px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.72);position:relative;padding:30px 0;transition:.3s}
+.nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:20px;height:1px;background:var(--gold);transition:.3s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-links a:hover:after,.nav-links a.active:after{right:0}
+.nav-cta{justify-self:end;border:1px solid rgba(200,167,107,.65);padding:10px 15px;border-radius:4px;font-size:8px;letter-spacing:.7px;text-transform:uppercase;color:var(--gold-light);transition:.3s}
+.nav-cta:hover{background:var(--gold);color:#111;border-color:var(--gold)}
+.menu-toggle{display:none;justify-self:end;background:none;border:1px solid var(--line);color:#fff;width:42px;height:38px;cursor:pointer}
+.mobile-menu{position:fixed;inset:0;z-index:120;background:rgba(5,5,4,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:.4s}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--serif);font-size:26px;text-transform:uppercase;letter-spacing:2px}
+.mobile-close{position:absolute;top:24px;right:25px;background:none;border:0;color:#fff;font-size:32px;cursor:pointer}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;overflow:hidden;background:#090909}
+.hero-media{position:absolute;inset:-4%;background:url('90.webp') center center/cover no-repeat;transform:scale(1.03);will-change:transform}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.84) 0%,rgba(0,0,0,.55) 27%,rgba(0,0,0,.12) 64%,rgba(0,0,0,.32) 100%)}
+.hero:after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent 22%,transparent 66%,rgba(0,0,0,.78))}
+.hero-content{position:relative;z-index:4;min-height:100svh;display:flex;align-items:center;padding:100px 6.5% 70px}
+.hero-copy{max-width:410px;animation:heroIn 1.15s cubic-bezier(.2,.8,.2,1) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:9px;color:var(--gold-light);letter-spacing:1.2px;margin-bottom:4px}
+.kicker{font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.56);margin-bottom:15px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.2vw,70px);line-height:.94;letter-spacing:-1.8px;text-transform:uppercase}
+.hero h1 span{color:var(--gold-light)}
+.hero-desc{font-family:var(--serif);font-size:14px;line-height:1.65;color:rgba(255,255,255,.72);margin-top:27px}
+.hero-actions{display:flex;gap:11px;margin-top:28px}
+.btn{height:42px;display:inline-flex;align-items:center;justify-content:center;padding:0 18px;border-radius:3px;text-transform:uppercase;letter-spacing:.7px;font-size:8px;transition:.3s;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,#dfc38e,#ad8b53);color:#15120c;border:1px solid #dfc38e}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(200,167,107,.2)}
+.btn-ghost{border:1px solid rgba(220,199,158,.62);background:rgba(0,0,0,.18);color:#eadab8}
+.btn-ghost:hover{background:rgba(200,167,107,.12);border-color:var(--gold)}
+.circle-arrow{display:grid;place-items:center;width:18px;height:18px;border:1px solid rgba(255,255,255,.45);border-radius:50%;margin-left:11px;font-size:11px}
+.hero-index{position:absolute;z-index:5;left:3.2%;bottom:47px;display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.58);font-size:9px}
+.hero-index:after{content:"";width:45px;height:1px;background:rgba(255,255,255,.35)}
+.specs{position:absolute;z-index:5;right:6.5%;bottom:43px;display:flex;align-items:center;gap:22px}
+.spec{text-align:center}.spec strong{display:block;font-family:var(--serif);font-weight:400;font-size:24px;line-height:1;color:#e6d6b6}.spec small{display:block;margin-top:7px;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.spec-divider{width:1px;height:34px;background:rgba(255,255,255,.32)}
+.scroll-label{position:absolute;z-index:5;left:50%;bottom:28px;transform:translateX(-50%);font-size:7px;letter-spacing:2.2px;text-transform:uppercase;color:rgba(255,255,255,.42);animation:breathe 2.2s infinite}
+@keyframes breathe{50%{opacity:1;transform:translateX(-50%) translateY(5px)} }
+
+/* ---------- SHARED SECTIONS ---------- */
+.light{background:var(--cream);color:#141412}
+.dark{background:var(--black);color:var(--white)}
+.section{padding:110px 8%}
+.section-inner{max-width:1280px;margin:auto}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.eyebrow-dark{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#9c7c48;margin-bottom:18px}
+.serif-title{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-1.4px}
+.serif-title span{color:#b08b4f}
+
+/* ---------- INTRO ---------- */
+.intro{padding:115px 8%;background:var(--cream);color:#161614}
+.intro-grid{max-width:1250px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:75px;align-items:center}
+.intro-copy p{font-family:var(--serif);font-size:clamp(24px,2.5vw,39px);line-height:1.28;color:#1a1916}
+.intro-image img{width:100%;display:block}
+
+/* ---------- REFINEMENT ---------- */
+.refinement{min-height:62vh;position:relative;display:grid;place-items:center;text-align:center;overflow:hidden;background:#f5f4f0 url('29.png') center/95px repeat;color:#171715}
+.refinement:before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.9)}
+.refinement-content{position:relative;z-index:1;padding:60px 20px}
+.refinement h2{font-family:var(--serif);font-size:clamp(42px,6vw,82px);font-weight:400;line-height:1.02;letter-spacing:-2px}
+
+/* ---------- LUXURY GRID ---------- */
+.luxury{background:#fff;color:#111;padding:115px 8%}
+.luxury-heading{font-family:var(--serif);font-weight:400;font-size:clamp(42px,5.6vw,78px);line-height:.97;letter-spacing:-2.5px;margin-bottom:75px}
+.luxury-grid{max-width:1250px;margin:auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start}
+.luxury-copy p,.feature-card p,.story-copy p{font-family:var(--serif);font-size:18px;line-height:1.65;color:#42413c}
+.feature-card img{width:100%;display:block}.feature-card h3{font-family:var(--serif);font-size:26px;font-weight:400;margin:25px 0 13px}
+
+/* ---------- STAGGERED STORY ---------- */
+.story{padding:120px 8%;background:#fff;color:#111}.story-wrap{max-width:1250px;margin:auto;display:flex;flex-direction:column;gap:125px}
+.story-row{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.story-row.reverse .story-image{order:2}.story-row.reverse .story-copy{order:1}.story-image img{width:100%;display:block}.story-copy h2{font-family:var(--serif);font-size:clamp(34px,4vw,58px);font-weight:400;line-height:1.03;margin-bottom:20px;letter-spacing:-1.4px}
+
+/* ---------- FEATURE ---------- */
+.feature{padding:110px 8%;background:#f7f7f4;color:#111}.feature-grid{max-width:1250px;margin:auto;display:grid;grid-template-columns:1.08fr .92fr;gap:80px;align-items:center}.feature-image img{width:100%;display:block}.feature-copy h2{font-family:var(--serif);font-size:clamp(34px,4vw,56px);font-weight:400;line-height:1.03;margin-bottom:20px}.feature-copy p{font-family:var(--serif);font-size:18px;line-height:1.65;color:#46443e}
+
+/* ---------- PERFORMANCE ---------- */
+.performance{padding:110px 8%;background:#fff;color:#111}.performance-grid{max-width:1250px;margin:auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}.performance-copy h2{font-family:var(--serif);font-size:clamp(34px,4vw,56px);font-weight:400;line-height:1.03;margin-bottom:20px}.performance-copy p{font-family:var(--serif);font-size:18px;line-height:1.65;color:#46443e}.performance-image img{width:100%;display:block}
+
+/* ---------- STATEMENT ---------- */
+.statement{padding:135px 5%;background:#fff;color:#111;text-align:center}.outline-title{font-family:var(--serif);font-size:clamp(58px,10vw,145px);font-weight:400;line-height:.82;letter-spacing:-4px;color:transparent;-webkit-text-stroke:1px #222}
+
+/* ---------- INTERIOR ---------- */
+.interior{min-height:82vh;background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.2)),url('95.png') center/cover no-repeat;display:flex;align-items:center;padding:100px 10%;color:#fff}.interior-copy{max-width:570px}.interior h2{font-family:var(--serif);font-size:clamp(45px,5.5vw,78px);font-weight:400;line-height:.98;letter-spacing:-2px;margin-bottom:28px}.icon-group{display:flex;gap:12px;margin-bottom:28px}.icon-circle{width:56px;height:56px;border:1px solid rgba(255,255,255,.75);border-radius:50%;display:grid;place-items:center}.icon-circle img{width:27px;height:27px;object-fit:contain}.interior h3{font-family:var(--serif);font-size:23px;font-weight:400;margin-bottom:10px}.interior p{font-family:var(--serif);font-size:16px;line-height:1.6;color:rgba(255,255,255,.72)}
+
+/* ---------- CLOSING ---------- */
+.closing{padding:115px 20px;background:#fff;color:#171715}.closing-inner{max-width:820px;margin:auto}.closing p{font-family:var(--serif);font-size:clamp(25px,3vw,43px);line-height:1.28}
+
+/* ---------- FOOTER ---------- */
+footer{background:#050505;color:#999;padding:60px 8% 35px}.footer-top{max-width:1250px;margin:auto}.disclaimer{font-size:10px;line-height:1.7;color:#777;max-width:1050px}.footer-line{height:1px;background:#252525;margin:30px 0}.footer-links{display:flex;flex-wrap:wrap;gap:18px 28px}.footer-links a{font-size:10px;color:#ddd}.footer-links a:hover{color:var(--gold-light)}.footer-bottom{margin-top:45px;display:flex;justify-content:space-between;gap:20px;font-size:9px;color:#686868}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1050px){.site-nav{grid-template-columns:170px 1fr 170px}.nav-links{gap:16px}.nav-links a{font-size:7px}.intro-grid,.luxury-grid,.story-row,.feature-grid,.performance-grid{gap:45px}}
+@media(max-width:800px){
+  .site-nav{height:68px;grid-template-columns:1fr auto;padding:0 20px}.nav-links,.nav-cta{display:none}.menu-toggle{display:block}
+  .hero-content{padding:105px 25px 145px}.hero-copy{max-width:380px}.hero h1{font-size:43px}.hero-media{background-position:64% center}.hero-index{left:20px;bottom:28px}.specs{right:20px;bottom:28px;gap:12px}.spec strong{font-size:19px}.scroll-label{display:none}
+  .section,.intro,.luxury,.story,.feature,.performance{padding:80px 22px}.intro-grid,.luxury-grid,.story-row,.feature-grid,.performance-grid{grid-template-columns:1fr}.story-wrap{gap:75px}.story-row.reverse .story-image,.story-row.reverse .story-copy{order:initial}.refinement{min-height:52vh}.statement{padding:90px 18px}.outline-title{letter-spacing:-2px}.interior{min-height:72vh;padding:80px 25px}.closing{padding:80px 22px}.footer-bottom{flex-direction:column}
+}
+@media(max-width:480px){.brand-name{font-size:14px}.hero h1{font-size:36px}.hero-desc{font-size:13px}.hero-actions{flex-direction:column;width:160px}.btn{width:160px}.spec small{font-size:6px}.spec-divider{height:27px}.luxury-heading{font-size:45px}.outline-title{font-size:57px}.mobile-menu a{font-size:21px}}
+
+
+
+
+/* =========================================
+   SOVEREIGN CINEMATIC FILM
+========================================= */
+
+.sovereign-film {
+    position: relative;
+
+    width: min(1150px, 100%);
+    aspect-ratio: 16 / 9;
+
+    margin: 55px auto 0;
+
+    overflow: hidden;
+
+    background: #050505;
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.55);
+
+}
+
+/* Video */
+
+.film-video {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 1.2s cubic-bezier(.2,.7,.2,1),
+        filter .8s ease;
+}
+
+/* Cinematic effect */
+
+.sovereign-film:hover .film-video {
+    transform: scale(1.025);
+
+}
+
+/* Overlay */
+
+.film-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.18),
+            transparent 45%,
+            rgba(0,0,0,.72)
+        );
+
+    pointer-events: none;
+}
+
+/* Play button */
+
+.film-play {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    width: 76px;
+    height: 76px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(220,194,145,.75);
+
+    background: rgba(0,0,0,.38);
+
+    backdrop-filter: blur(12px);
+
+    color: #e0c28d;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        .35s ease;
+
+}
+
+.film-play:hover {
+
+    transform:
+        translate(-50%,-50%)
+        scale(1.12);
+
+    background: rgba(206,174,112,.16);
+
+    box-shadow:
+        0 0 50px rgba(207,174,112,.18);
+
+}
+
+.play-icon {
+
+    font-size: 17px;
+
+    margin-left: 3px;
+
+}
+
+/* Caption */
+
+.film-caption {
+
+    position: absolute;
+
+    left: 28px;
+    right: 28px;
+    bottom: 23px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: rgba(255,255,255,.68);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    z-index: 3;
+
+}
+
+/* When video is playing */
+
+.sovereign-film.playing .film-play {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+.sovereign-film.playing:hover .film-play {
+
+    opacity: 1;
+
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .sovereign-film {
+
+        margin-top: 40px;
+
+        aspect-ratio: 9 / 16;
+
+    }
+
+    .film-play {
+
+        width: 62px;
+        height: 62px;
+
+    }
+
+    .film-caption {
+
+        left: 18px;
+        right: 18px;
+        bottom: 17px;
+
+        font-size: 7px;
+
+        letter-spacing: 1.3px;
+
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="site-nav" id="siteNav">
+  <a class="brand" href="#sovereign" aria-label="LMW Automotive home">
+    <img  style="height: 40px;" src="53.png">
+    <span><strong class="brand-name">LMW</strong><small style="font-size:10px;" class="brand-sub">Sovereign Holding</small></span>
+  </a>
+
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="#sovereign">Sovereign</a>
+    <a href="#design">Design</a>
+    <a href="#interior">Interior</a>
+    <a href="#performance">Performance</a>
+    <a href="#technology">Technology</a>
+    <a href="#ownership">Ownership</a>
+    <a href="#configurator">Configurator</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <a class="nav-cta" href="#contact">Private Consultation</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">×</button>
+  <a href="#sovereign">Sovereign</a><a href="#design">Design</a><a href="#interior">Interior</a><a href="#performance">Performance</a>
+  <a href="#technology">Technology</a><a href="#ownership">Ownership</a><a href="#configurator">Configurator</a><a href="#contact">Contact</a>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="sovereign">
+    <div class="hero-media" id="heroMedia"></div>
+    <div class="hero-content">
+      <div class="hero-copy">
+        <div class="eyebrow"></div>
+        <h1 class="kicker">The Sovereign</h1>
+        
+        <p class="hero-desc">A New Expression Of Crafted Automotive Grandeur. <br> Crafted without compromise.<br>Engineered to lead.By Founder Mehmet Salar</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="main.html">Explore The Sovereign</a>
+          <a class="btn btn-ghost" href="#film">Watch Film <span class="circle-arrow">›</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-index"></div>
+    <div class="specs"><div class="spec"><strong>V8</strong><small>Biturbo</small></div><div class="spec-divider"></div><div class="spec"><strong>650</strong><small>Horsepower</small></div></div>
+    <div class="scroll-label">Scroll</div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="design">
+    <div class="intro-grid reveal">
+      <div class="intro-copy"><p>Welcome to a world of generous comfort and refined craftsmanship. With intelligent technology and a commanding presence, every journey becomes an experience of calm sophistication.</p></div>
+      <div class="intro-image"><img src="91.png" alt="LMW Sovereign exterior detail" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- REFINEMENT -->
+  <section class="refinement reveal" id="technology"><div class="refinement-content"><div class="eyebrow-dark"> The Art Of Detail</div><h2>A new dimension of<br>refinement.</h2></div></section>
+
+  <!-- LUXURY -->
+  <section class="luxury">
+    <div class="section-inner reveal">
+      <h2 class="luxury-heading">Step into a world<br>of crafted<br>exclusivity.</h2>
+      <div class="luxury-grid">
+        <div class="luxury-copy"><p>The new LMW Sovereign LS8 opens a world where presence feels effortless and comfort feels complete. With exceptional space and exquisite attention to detail, it transforms every journey into an experience. It gives you a cosmos of your own.</p></div>
+        <div class="feature-card"><img src="93.png" alt="LMW Sovereign grille" loading="lazy"><h3>Illuminated grille and standing star.</h3><p>The LMW Sovereign LS8 is distinguished by its iconic radiator grille, featuring an illuminated standing star, illuminated surround and LMW lettering.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <div class="story-wrap">
+      <div class="story-row reveal"><div class="story-image"><img src="92.png" alt="LMW Sovereign rear view" loading="lazy"></div><div class="story-copy"><h2>A refined light signature.</h2><p>With newly designed rear lights, the rear of the LMW Sovereign LS8 is elevated with an even more striking appearance.</p></div></div>
+      <div class="story-row reverse reveal"><div class="story-image"><img src="51.png" alt="LMW Sovereign welcome illumination" loading="lazy"></div><div class="story-copy"><h2>A welcoming ceremony.</h2><p>Before the journey begins, light sets the tone. The new LMW Sovereign LS8 greets you with an elegant illumination sequence, creating a sense of distinction from the very first moment.</p></div></div>
+    </div>
+  </section>
+
+  <!-- COMFORT -->
+  <section class="feature" id="ownership"><div class="feature-grid reveal"><div class="feature-image"><img src="94.png" alt="LMW Sovereign luxury detail" loading="lazy"></div><div class="feature-copy"><h2>Ease, from the very first step.</h2><p>Automatically extending running boards offer added ease when entering and leaving the new LMW Sovereign LS8. A thoughtful detail that brings comfort and confidence to every journey.</p></div></div></section>
+
+  <!-- PERFORMANCE -->
+  <section class="performance" id="performance"><div class="performance-grid reveal"><div class="performance-copy"><div class="eyebrow-dark"> — Performance</div><h2>A quieter world within.</h2><p>With enhanced acoustic comfort, the new LMW Sovereign LS8 creates a quieter interior atmosphere and your own cosmos. Exterior noise is reduced, allowing serenity, conversation, entertainment, and comfort to take their place.</p></div><div class="performance-image"><img src="96.png" alt="LMW Sovereign interior" loading="lazy"></div></div></section>
+
+  <!-- STATEMENT -->
+  <section class="statement reveal"><h2 class="outline-title">Above<br>and beyond.</h2></section>
+
+  <!-- INTERIOR -->
+  <section class="interior" id="interior"><div class="interior-copy reveal"><div class="eyebrow">  Interior</div><h2>First-class,<br>from the rear.</h2><div class="icon-group"><div class="icon-circle"><img src="seats.png" alt="Massage"></div><div class="icon-circle"><img src="d.png" alt="Drink"></div><div class="icon-circle"><img src="play.png" alt="Media"></div></div><h3>Wellbeing that restores.</h3><p>New calf massage functions bring greater comfort to the rear seats for a more relaxing, soothing feeling.</p></div></section>
+
+  <!-- CLOSING -->
+  <section class="closing" id="configurator"><div class="closing-inner reveal"><div class="eyebrow-dark">The Sovereign Experience</div><p>The new LMW Sovereign LS8 unites three worlds: a refined exterior, a crafted interior, and an exclusive rear lounge for exceptional travel. An invitation to look closer and step into a cosmos of your own.</p><div style="margin-top:32px"><a class="btn btn-primary" href="#contact">Begin Your Consultation</a></div></div></section>
+
+  <!-- CONTACT / FILM -->
+  <section class="section dark" id="film">
+
+    <div class="section-inner reveal" style="text-align:center">
+
+        <div class="eyebrow">Film</div>
+
+        <h2 class="serif-title" style="font-size:clamp(42px,6vw,80px)">
+            The Sovereign,<br>
+            <span>in motion.</span>
+        </h2>
+
+        <p style="font-family:var(--serif);max-width:650px;margin:25px auto 0;color:#aaa;line-height:1.7">
+            A cinematic expression of design, presence and performance.
+        </p>
+
+        <!-- CINEMATIC VIDEO -->
+
+        
+            <div class="film-caption">
+
+                <span>LMW SOVEREIGN LS8</span>
+
+                <span>01 — FILM</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+  <section class="section light" id="contact"><div class="section-inner reveal" style="text-align:center"><div class="eyebrow-dark">Private Concierge</div><h2 class="serif-title" style="font-size:clamp(42px,6vw,80px)">Private<br><span>Consultation.</span></h2><p style="font-family:var(--serif);max-width:620px;margin:25px auto;color:#555;line-height:1.7">Speak with an LMW Automotive representative and discover the Sovereign experience.</p><a class="btn btn-primary" style="margin-top:12px" href="booking.html">Contact Concierge</a></div></section>
+</main>
+
+<footer>
+  <div class="footer-top">
+    <p class="disclaimer">[1] The stated values are illustrative specifications for the LMW Sovereign concept and may vary by final production configuration. Performance, consumption and emissions depend on driving style and other factors.</p>
+    <div class="footer-line"></div>
+    <div class="footer-links"><a href="Provied.html">Provider</a><a href="legal.html">Legal Notice</a><a href="Setting.html">Settings</a><a href="statement.html">Privacy Statement</a><a href="notice.html">Third Party License Notice</a><a href="personal.html">Do Not Sell Or Share My Personal Information</a><a href="informetion.html">Accessibility</a><a href="contact.html">Contact</a></div>
+    <div class="footer-bottom"><span>© 2026 LMW — Sovereign LS V8  Founder By Mehmet Salar</span><span></span></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('siteNav');
+const heroMedia=document.getElementById('heroMedia');
+const toggle=document.getElementById('menuToggle');
+const mobile=document.getElementById('mobileMenu');
+const close=document.getElementById('mobileClose');
+const links=[...document.querySelectorAll('.nav-links a')];
+const sections=[...document.querySelectorAll('main section[id]')];
+
+function onScroll(){
+  nav.classList.toggle('scrolled',window.scrollY>45);
+  if(window.innerWidth>800) heroMedia.style.transform=`translate3d(0,${window.scrollY*.035}px,0) scale(1.03)`;
+  let current='sovereign';
+  sections.forEach(section=>{if(window.scrollY>=section.offsetTop-180) current=section.id});
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+
+toggle.addEventListener('click',()=>mobile.classList.add('open'));
+close.addEventListener('click',()=>mobile.classList.remove('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>mobile.classList.remove('open')));
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>

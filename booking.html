@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global Booking | LMW Sovereign V18</title>
+    <link rel="stylesheet" href="style.css">
+    <style>body { font-family: 'Georgia', serif; background: #f9f9f9; padding: 50px 10%; }
+.booking-container { max-width: 500px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+button { width: 100%; padding: 15px; background: #000; color: #fff; border: none; cursor: pointer; margin-top: 20px; }</style>
+</head>
+<head>
+    <!-- Favicon Code -->
+    <link rel="icon" href="53.png" type="image/png">
+</head>
+<body>
+    <div class="booking-container">
+        <h1>Global Booking</h1>
+        <form id="bookingForm" action="https://formspree.io/f/mpqvvyav
+" method="POST">
+            <!-- Country Selector -->
+            <select name="country" required>
+
+                <option value="">Select your country</option>
+                <option value="non">Non</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Italy">Italy</option>
+                <option value="Germany">Germany</option>
+                <option value="china">china</option>
+                <option value="Azerbaijan">Azerbaijan</option>
+                <option value="Monaco">Monaco</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Russia">Russia</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Netherlands ">Netherlands </option>
+                <option value="Spain">Spain  </option>
+                <option value="Greece">Greece </option>
+                <option value="Ukraine">Ukraine </option>
+
+                <!-- Add all countries here -->
+            </select>
+
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            
+            <!-- Timezone Selector -->
+            <select name="timezone" required>
+                <option value="">Select Time Zone</option>
+                <option value="non">Standard Time (non)</option>
+                <option value="GMT+5">Pakistan Standard Time (GMT+5)</option>
+                <option value="GMT+3">Turkey Time (GMT+3)</option>
+                <option value="EST">Eastern Standard Time (EST)</option>
+            </select>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </div>
+</body>
+</html>

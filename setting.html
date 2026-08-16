@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | LMW Sovereign V18</title>
+    <style>
+        /* Soft Luxury Styling */
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f9f9f9;
+            color: #1a1a1a;
+            transition: all 0.3s ease; /* Smooth transition for dark mode */
+            padding: 50px 10%;
+        }
+
+        .settings-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 30px; }
+
+        .settings-block {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Toggle Switch Styling */
+        .switch { position: relative; display: inline-block; width: 50px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 24px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #000; }
+        input:checked + .slider:before { transform: translateX(26px); }
+
+        /* Dark Mode CSS Class */
+        body.dark-mode { background-color: #121212; color: #ffffff; }
+        body.dark-mode .settings-container { background-color: #1e1e1e; color: #ffffff; box-shadow: none; }
+        body.dark-mode .settings-block { border-bottom: 1px solid #333; }
+    </style>
+</head>
+<head>
+    <!-- Favicon Code -->
+    <link rel="icon" href="53.png" type="image/png">
+</head>
+<body>
+
+    <div class="settings-container">
+        <h1>Settings</h1>
+        
+        <!-- Dark Mode Toggle -->
+        <div class="settings-block">
+            <h3>Theme Preference</h3>
+            <p>Toggle between Light and Dark mode.</p>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- Analytics Toggle -->
+        <div class="settings-block">
+            <h3>Analytics Tracking</h3>
+            <p>Allow performance data collection.</p>
+            <label class="switch">
+                <input type="checkbox" id="analytics-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <button onclick="saveSettings()" style="padding: 12px 30px; cursor:pointer;">Save Settings</button>
+    </div>
+
+    <script>
+        // 1. Dark Mode Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // 2. Analytics Logic
+        const analyticsToggle = document.getElementById('analytics-toggle');
+        analyticsToggle.addEventListener('change', (e) => {
+            const status = e.target.checked ? "Enabled" : "Disabled";
+            console.log("Analytics: " + status);
+        });
+
+        // 3. Save Settings Button Logic
+        function saveSettings() {
+            const isDark = document.body.classList.contains('dark-mode');
+            const isAnalytics = analyticsToggle.checked;
+            
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('analytics', isAnalytics);
+            
+            alert("Settings saved successfully!");
+        }
+    </script>
+</body>
+</html>
