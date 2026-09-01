@@ -118,6 +118,322 @@ a{color:inherit;text-decoration:none}
  .company-card{min-height:390px;padding:30px}.ecosystem-grid,.footer-grid{grid-template-columns:1fr}
  .footer-bottom{flex-direction:column;gap:12px}
 }
+
+
+
+
+  <style>
+/* ================= SERVIGER VALUE ================= */
+
+.serviger-value-section{
+  position:relative;
+  padding:145px 8%;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 78% 50%,
+      rgba(198,165,107,.13),
+      transparent 32%
+    ),
+    #070706;
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.serviger-value-section:before{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border:1px solid rgba(198,165,107,.06);
+  border-radius:50%;
+  right:-180px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.serviger-value-inner{
+  max-width:1250px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.serviger-value-eyebrow{
+  color:#e0c58f;
+  font-size:8px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:55px;
+}
+
+.serviger-value-main{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  gap:8vw;
+}
+
+.serviger-value-label{
+  color:#77736c;
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+.serviger-value-number{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(80px,11vw,155px);
+  line-height:.8;
+  letter-spacing:-7px;
+  color:#f3efe6;
+  font-weight:400;
+}
+
+.serviger-value-number .dollar{
+  color:#c6a56b;
+  font-size:.55em;
+  vertical-align:top;
+  margin-right:8px;
+  letter-spacing:-2px;
+}
+
+.serviger-value-number .unit{
+  color:#c6a56b;
+  font-size:.45em;
+  letter-spacing:-2px;
+  margin-left:8px;
+}
+
+.serviger-value-range{
+  margin-top:27px;
+  color:#c6a56b;
+  font-size:10px;
+  letter-spacing:3px;
+}
+
+.serviger-value-line{
+  width:90px;
+  height:1px;
+  background:#c6a56b;
+  margin:30px 0 22px;
+}
+
+.serviger-value-left p{
+  max-width:570px;
+  color:#8d8981;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:16px;
+  line-height:1.8;
+}
+
+/* ORBIT */
+
+.serviger-value-right{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.value-orbit{
+  width:330px;
+  height:330px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.orbit-ring{
+  position:absolute;
+  border:1px solid rgba(198,165,107,.22);
+  border-radius:50%;
+}
+
+.ring-one{
+  width:245px;
+  height:245px;
+  animation:servigerSpin 22s linear infinite;
+}
+
+.ring-two{
+  width:285px;
+  height:285px;
+  border-style:dashed;
+  opacity:.5;
+  animation:servigerSpinReverse 28s linear infinite;
+}
+
+.ring-three{
+  width:325px;
+  height:325px;
+  opacity:.22;
+  animation:servigerSpin 38s linear infinite;
+}
+
+.orbit-center{
+  width:175px;
+  height:175px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(198,165,107,.20),
+      rgba(5,5,5,.96) 70%
+    );
+  border:1px solid rgba(198,165,107,.55);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  box-shadow:0 0 60px rgba(198,165,107,.08);
+}
+
+.orbit-center span{
+  color:#77736c;
+  font-size:7px;
+  letter-spacing:3px;
+  margin-bottom:9px;
+}
+
+.orbit-center strong{
+  color:#f1ede4;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:34px;
+  font-weight:400;
+}
+
+.orbit-center strong b{
+  font-weight:400;
+}
+
+.orbit-center small{
+  color:#77736c;
+  font-size:6px;
+  letter-spacing:2px;
+  margin-top:8px;
+}
+
+@keyframes servigerSpin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+@keyframes servigerSpinReverse{
+  from{transform:rotate(360deg)}
+  to{transform:rotate(0deg)}
+}
+
+/* FOUNDER */
+
+.serviger-founder-bar{
+  margin-top:95px;
+  padding-top:25px;
+  border-top:1px solid rgba(255,255,255,.10);
+  display:flex;
+  align-items:center;
+  gap:18px;
+  color:#55524c;
+  font-size:8px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.serviger-founder-bar strong{
+  color:#ddd2bd;
+  font-weight:400;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .serviger-value-section{
+    padding:105px 7%;
+  }
+
+  .serviger-value-main{
+    grid-template-columns:1fr;
+    gap:75px;
+  }
+
+  .serviger-value-number{
+    font-size:clamp(70px,20vw,110px);
+    letter-spacing:-5px;
+  }
+
+  .value-orbit{
+    width:280px;
+    height:280px;
+  }
+
+  .ring-one{
+    width:205px;
+    height:205px;
+  }
+
+  .ring-two{
+    width:240px;
+    height:240px;
+  }
+
+  .ring-three{
+    width:275px;
+    height:275px;
+  }
+
+  .serviger-founder-bar{
+    flex-wrap:wrap;
+    gap:12px;
+    line-height:1.7;
+  }
+}
+</style>
+
+<script>
+/* LIVE HOLDING VALUE ANIMATION
+   Range: $450M → $500M → $450M
+*/
+
+(function(){
+
+  const mainValue = document.getElementById("holdingValue");
+  const orbitValue = document.getElementById("orbitValue");
+
+  let value = 450;
+  let direction = 1;
+
+  function animateValue(){
+
+    value += direction * 0.15;
+
+    if(value >= 500){
+      value = 500;
+      direction = -1;
+    }
+
+    if(value <= 450){
+      value = 450;
+      direction = 1;
+    }
+
+    const rounded = Math.round(value);
+
+    mainValue.textContent = rounded;
+    orbitValue.textContent = rounded;
+
+  }
+
+  setInterval(animateValue, 100);
+
+})();
+</script>
+<!-- ================= END SERVIGER VALUE SECTION ================= -->
 </style>
 </head>
 <link rel="icon" href="53.png" type="image/png">
@@ -247,6 +563,68 @@ a{color:inherit;text-decoration:none}
  </div>
 </section>
 
+  <!-- ================= SERVIGER HOLDING VALUE SECTION ================= -->
+<section class="serviger-value-section" id="holding-value">
+
+  <div class="serviger-value-inner">
+
+    <div class="serviger-value-eyebrow">
+      SERVIGER HOLDING · GROUP VALUE
+    </div>
+
+    <div class="serviger-value-main">
+
+      <div class="serviger-value-left">
+        <div class="serviger-value-label">
+          Estimated Holding Value
+        </div>
+
+        <div class="serviger-value-number">
+          <span class="dollar">$</span><span id="holdingValue">450</span><span class="unit">M</span>
+        </div>
+
+        <div class="serviger-value-range">
+          $450M — $500M
+        </div>
+
+        <div class="serviger-value-line"></div>
+
+        <p>
+          A diversified portfolio spanning automotive, beauty,
+          real estate and digital commerce.
+        </p>
+      </div>
+
+      <div class="serviger-value-right">
+
+        <div class="value-orbit">
+          <div class="orbit-ring ring-one"></div>
+          <div class="orbit-ring ring-two"></div>
+          <div class="orbit-ring ring-three"></div>
+
+          <div class="orbit-center">
+            <span>GROUP</span>
+            <strong>$<b id="orbitValue">450</b>M</strong>
+            <small>PORTFOLIO VALUE</small>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="serviger-founder-bar">
+      <span>FOUNDER & CHAIRMAN</span>
+      <strong>ATEŞ KARHAN</strong>
+      <span>·</span>
+      <span>SERVIGER HOLDING</span>
+    </div>
+
+  </div>
+
+</section>
+
+  
 <section class="section contact" id="contact">
  <div class="section-inner reveal">
   <div class="eyebrow"> Contact</div>
