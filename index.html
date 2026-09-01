@@ -433,6 +433,41 @@ a{color:inherit;text-decoration:none}
 
 })();
 </script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const valueElement = document.getElementById("holdingValue");
+    const orbitElement = document.getElementById("orbitValue");
+
+    if (!valueElement || !orbitElement) return;
+
+    let value = 450.0;
+    let target = 500.0;
+
+    function updateValue() {
+
+        value += 0.1;
+
+        if (value >= target) {
+            value = target;
+            target = 450.0;
+        }
+
+        if (value <= 450.0 && target === 450.0) {
+            target = 500.0;
+        }
+
+        const displayValue = value.toFixed(1);
+
+        valueElement.textContent = displayValue;
+        orbitElement.textContent = displayValue;
+    }
+
+    setInterval(updateValue, 100);
+
+});
+</script>
 <!-- ================= END SERVIGER VALUE SECTION ================= -->
 
 </head>
@@ -531,7 +566,7 @@ a{color:inherit;text-decoration:none}
     <div class="card-type">Founder & Chairman</div>
     <p style="font-family:var(--serif);font-size:32px;color:#e8e4db;line-height:1.15">Building ambitious businesses with a long-term vision.</p>
     <p>Ateş Karhan leads Sovereign Holding with a focus on entrepreneurship, brand creation, innovation and the development of businesses designed for international growth.</p>
-    <div class="signature">Ateş Karhan<small>FOUNDER · SOVEREIGN HOLDING</small></div>
+    <div class="signature">Ateş Karhan<small>FOUNDER ·LMW SOVEREIGN HOLDING</small></div>
    </div>
   </div>
  </div>
