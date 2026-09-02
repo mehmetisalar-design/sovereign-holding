@@ -712,57 +712,51 @@
 
 
 
-        <!-- =========================================================
-     ATEŞ KARHAN — EXECUTIVE CV
-     STANDALONE CV MODULE
-     ========================================================= -->
-
-<style>
-/* ================= CV BUTTON ================= */
+    
+/* =========================================================
+   CV BUTTON
+   ========================================================= */
 
 .cv-open-btn {
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
 
-    padding: 14px 26px;
+    padding: 14px 24px;
 
-    background: rgba(255,255,255,.88);
+    background: #ffffff;
     color: #171717;
 
-    border: 1px solid #ded8ca;
+    border: 1px solid #d8d0c1;
     border-radius: 4px;
 
     font-family: inherit;
-    font-size: .72rem;
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
 
-    cursor: pointer;
+    cursor: pointer !important;
 
-    transition:
-        transform .35s ease,
-        background .35s ease,
-        color .35s ease,
-        box-shadow .35s ease,
-        border-color .35s ease;
+    transition: all .3s ease;
 
-    box-shadow: 0 8px 25px rgba(0,0,0,.04);
+    box-shadow: 0 6px 20px rgba(0,0,0,.05);
 }
 
 .cv-open-btn:hover {
-    transform: translateY(-3px);
     background: #171717;
     color: #fff;
+
     border-color: #171717;
-    box-shadow: 0 15px 35px rgba(0,0,0,.10);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 30px rgba(0,0,0,.12);
 }
 
 .cv-icon {
     color: #b89752;
-    font-size: 16px;
 }
 
 .cv-open-btn:hover .cv-icon {
@@ -770,33 +764,44 @@
 }
 
 
-/* ================= CV MODAL ================= */
+/* =========================================================
+   FULL SCREEN CV OVERLAY
+   ========================================================= */
 
 .cv-modal {
-    position: fixed;
-    inset: 0;
+    position: fixed !important;
 
-    z-index: 99999;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    z-index: 999999 !important;
 
     display: none;
-    align-items: center;
-    justify-content: center;
 
-    padding: 25px;
+    align-items: center !important;
+    justify-content: center !important;
 
-    background: rgba(20,20,20,.48);
+    padding: 30px !important;
 
-    backdrop-filter: blur(13px);
-    -webkit-backdrop-filter: blur(13px);
+    box-sizing: border-box;
+
+    background: rgba(18,18,18,.50);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    cursor: default !important;
 }
 
 .cv-modal.active {
-    display: flex;
+    display: flex !important;
 
-    animation: cvFade .3s ease forwards;
+    animation: cvOverlayIn .25s ease forwards;
 }
 
-@keyframes cvFade {
+@keyframes cvOverlayIn {
     from {
         opacity: 0;
     }
@@ -807,29 +812,42 @@
 }
 
 
-/* ================= CV PAPER ================= */
+/* =========================================================
+   CV PAPER
+   ========================================================= */
 
 .cv-paper {
+
     position: relative;
 
-    width: min(950px, 100%);
-    max-height: 92vh;
+    width: min(1000px, 94vw) !important;
 
-    overflow-y: auto;
+    height: min(850px, 90vh) !important;
 
-    background: #ffffff;
+    max-height: 90vh !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    margin: auto !important;
+
+    background: #fff;
+
+    border-radius: 6px;
 
     border: 1px solid rgba(184,151,82,.35);
 
-    border-radius: 8px;
-
     box-shadow:
-        0 35px 100px rgba(0,0,0,.22);
+        0 30px 100px rgba(0,0,0,.25);
 
-    animation: cvSlide .4s cubic-bezier(.16,1,.3,1);
+    box-sizing: border-box;
+
+    cursor: default !important;
+
+    animation: cvPaperIn .4s cubic-bezier(.16,1,.3,1) forwards;
 }
 
-@keyframes cvSlide {
+@keyframes cvPaperIn {
 
     from {
         opacity: 0;
@@ -843,48 +861,87 @@
 }
 
 
-/* ================= CLOSE ================= */
+/* =========================================================
+   CV SCROLLBAR
+   ========================================================= */
+
+.cv-paper::-webkit-scrollbar {
+    width: 7px;
+}
+
+.cv-paper::-webkit-scrollbar-track {
+    background: #f7f6f3;
+}
+
+.cv-paper::-webkit-scrollbar-thumb {
+    background: #c7b17e;
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
 
 .cv-close {
-    position: absolute;
 
-    top: 18px;
-    right: 18px;
+    position: sticky !important;
 
-    width: 40px;
-    height: 40px;
+    float: right;
+
+    top: 18px !important;
+    right: 18px !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    margin-right: 18px;
+
+    margin-bottom: -58px;
+
+    z-index: 50 !important;
+
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
 
     border-radius: 50%;
 
-    border: 1px solid #ded8ca;
+    border: 1px solid #ddd6c8;
 
-    background: rgba(255,255,255,.95);
+    background: rgba(255,255,255,.96);
 
     color: #171717;
 
-    font-size: 21px;
+    font-size: 22px;
+
     line-height: 1;
 
-    cursor: pointer;
+    cursor: pointer !important;
 
-    z-index: 5;
-
-    transition: .3s ease;
+    transition: all .3s ease;
 }
 
 .cv-close:hover {
+
     background: #171717;
-    color: white;
+
+    color: #fff;
+
     border-color: #171717;
 
     transform: rotate(90deg);
 }
 
 
-/* ================= HEADER ================= */
+/* =========================================================
+   CV HEADER
+   ========================================================= */
 
 .cv-header {
-    padding: 55px 60px 38px;
+
+    padding: 55px 65px 38px;
 
     background:
         linear-gradient(
@@ -893,27 +950,34 @@
             #faf9f5 100%
         );
 
-    border-bottom: 1px solid #e8e3d9;
+    border-bottom: 1px solid #e6dfd3;
+
+    text-align: left;
 }
 
 .cv-label {
-    margin-bottom: 10px;
+
+    margin-bottom: 12px;
 
     color: #b89752;
 
-    font-size: .67rem;
+    font-size: 10px;
+
     font-weight: 600;
 
     letter-spacing: 3px;
+
     text-transform: uppercase;
 }
 
 .cv-name {
+
     margin: 0 0 10px;
 
     font-family: Georgia, "Times New Roman", serif;
 
-    font-size: 2.65rem;
+    font-size: 42px;
+
     font-weight: 500;
 
     letter-spacing: 1px;
@@ -922,178 +986,204 @@
 }
 
 .cv-position {
+
     color: #777;
 
-    font-size: .86rem;
-    font-weight: 400;
-
-    letter-spacing: .6px;
+    font-size: 12px;
 
     line-height: 1.7;
+
+    letter-spacing: .6px;
 }
 
 
-/* ================= BODY ================= */
+/* =========================================================
+   CV CONTENT
+   ========================================================= */
 
 .cv-content {
-    padding: 42px 60px 55px;
+
+    padding: 42px 65px 60px;
+
+    background: #fff;
 }
 
 .cv-columns {
+
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.3fr)
-        minmax(250px, .7fr);
+        minmax(0, 1.35fr)
+        minmax(260px, .65fr);
 
-    gap: 48px;
+    gap: 55px;
+
+    align-items: start;
 }
 
 
-/* ================= SECTION ================= */
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 
 .cv-section {
-    margin-bottom: 36px;
+
+    margin-bottom: 38px;
 }
 
 .cv-section-title {
-    margin: 0 0 18px;
+
+    margin: 0 0 17px;
 
     padding-bottom: 10px;
 
-    border-bottom: 1px solid #e5dfd4;
+    border-bottom: 1px solid #e4ddd2;
 
     font-family: Georgia, "Times New Roman", serif;
 
-    font-size: 1.15rem;
+    font-size: 18px;
+
     font-weight: 500;
 
     color: #171717;
 }
 
 .cv-text {
+
     margin: 0;
 
-    color: #686868;
+    color: #6f6f6f;
 
-    font-size: .88rem;
+    font-size: 12px;
 
-    line-height: 1.8;
+    line-height: 1.85;
 
     font-weight: 300;
 }
 
 
-/* ================= CAREER ITEM ================= */
+/* =========================================================
+   CV ITEMS
+   ========================================================= */
 
 .cv-item {
-    position: relative;
 
-    padding-left: 19px;
+    padding-left: 18px;
+
     padding-bottom: 24px;
 
-    margin-bottom: 22px;
+    margin-bottom: 23px;
 
     border-left: 1px solid #b89752;
 }
 
 .cv-item:last-child {
+
     margin-bottom: 0;
 }
 
 .cv-item-date {
+
     margin-bottom: 6px;
 
     color: #b89752;
 
-    font-size: .64rem;
+    font-size: 9px;
 
     font-weight: 600;
 
-    letter-spacing: 1.6px;
+    letter-spacing: 1.5px;
 
     text-transform: uppercase;
 }
 
 .cv-item-title {
-    margin: 0 0 6px;
 
-    color: #222;
+    margin: 0 0 7px;
 
-    font-size: .94rem;
+    color: #202020;
+
+    font-size: 13px;
 
     font-weight: 600;
 }
 
 .cv-item-text {
+
     margin: 0;
 
-    color: #737373;
+    color: #707070;
 
-    font-size: .82rem;
+    font-size: 11px;
 
-    line-height: 1.7;
-
-    font-weight: 300;
+    line-height: 1.75;
 }
 
 
-/* ================= FACTS ================= */
+/* =========================================================
+   DETAILS
+   ========================================================= */
 
 .cv-facts {
+
     display: grid;
 
     gap: 10px;
 }
 
 .cv-fact {
-    padding: 14px 15px;
+
+    padding: 14px;
 
     background: #faf9f6;
 
-    border: 1px solid #e7e1d7;
+    border: 1px solid #e5dfd4;
 
     border-radius: 3px;
 }
 
 .cv-fact-label {
+
     display: block;
 
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 
     color: #888;
 
-    font-size: .61rem;
+    font-size: 8px;
 
-    letter-spacing: 1.4px;
+    letter-spacing: 1.5px;
 
     text-transform: uppercase;
 }
 
 .cv-fact-value {
+
     display: block;
 
-    color: #222;
+    color: #202020;
 
-    font-size: .81rem;
+    font-size: 11px;
 
     line-height: 1.5;
 }
 
 
-/* ================= ACTIONS ================= */
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
 
 .cv-actions {
+
     display: flex;
 
     flex-wrap: wrap;
 
     gap: 10px;
-
-    margin-top: 8px;
 }
 
 .cv-action {
+
     display: inline-flex;
 
     align-items: center;
@@ -1101,90 +1191,107 @@
 
     padding: 12px 18px;
 
-    border-radius: 3px;
+    background: #171717;
+
+    color: #fff;
 
     border: 1px solid #171717;
 
-    background: #171717;
+    border-radius: 3px;
 
-    color: white;
-
-    text-decoration: none;
-
-    font-size: .65rem;
+    font-size: 9px;
 
     font-weight: 600;
 
-    letter-spacing: 1.6px;
+    letter-spacing: 1.5px;
 
     text-transform: uppercase;
 
-    cursor: pointer;
+    text-decoration: none;
+
+    cursor: pointer !important;
 
     transition: .3s ease;
 }
 
 .cv-action:hover {
+
     background: #b89752;
+
     border-color: #b89752;
 }
 
 .cv-action.secondary {
-    background: white;
+
+    background: #fff;
+
     color: #171717;
-    border-color: #dcd6ca;
+
+    border-color: #ddd6ca;
 }
 
 .cv-action.secondary:hover {
+
     background: #171717;
-    color: white;
+
+    color: #fff;
+
     border-color: #171717;
 }
 
 
-/* ================= LOCK PAGE ================= */
-
-body.cv-lock {
-    overflow: hidden;
-}
-
-
-/* ================= MOBILE ================= */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media(max-width: 700px) {
 
     .cv-modal {
-        padding: 10px;
+
+        padding: 10px !important;
+    }
+
+    .cv-paper {
+
+        width: 96vw !important;
+
+        height: 94vh !important;
+
+        max-height: 94vh !important;
     }
 
     .cv-header {
-        padding: 42px 25px 30px;
+
+        padding: 40px 25px 30px;
     }
 
     .cv-content {
+
         padding: 30px 25px 40px;
     }
 
     .cv-columns {
+
         grid-template-columns: 1fr;
+
         gap: 5px;
     }
 
     .cv-name {
-        font-size: 2rem;
+
+        font-size: 32px;
     }
 
     .cv-position {
-        font-size: .76rem;
-    }
 
-    .cv-paper {
-        max-height: 95vh;
+        font-size: 10px;
     }
 }
 
 
-/* ================= PRINT ================= */
+/* =========================================================
+   PRINT
+   ========================================================= */
 
 @media print {
 
@@ -1198,6 +1305,7 @@ body.cv-lock {
     }
 
     #executiveCV {
+
         position: absolute !important;
 
         display: block !important;
@@ -1206,19 +1314,22 @@ body.cv-lock {
 
         padding: 0 !important;
 
-        background: white !important;
+        background: #fff !important;
     }
 
     .cv-paper {
+
         width: 100% !important;
+
+        height: auto !important;
 
         max-height: none !important;
 
         overflow: visible !important;
 
-        border: none !important;
-
         box-shadow: none !important;
+
+        border: none !important;
     }
 
     .cv-close,
@@ -1226,9 +1337,6 @@ body.cv-lock {
         display: none !important;
     }
 }
-</style>
-
-
 
 
     </style>
@@ -1248,68 +1356,52 @@ body.cv-lock {
 }</script>
     <script>
 
-/* =========================================================
-   CV OPEN
-   ========================================================= */
-
 function openCV() {
 
-    const modal =
-        document.getElementById("executiveCV");
+    const cv = document.getElementById("executiveCV");
 
-    if (!modal) return;
+    if (!cv) return;
 
-    modal.classList.add("active");
+    cv.classList.add("active");
 
-    modal.setAttribute(
+    cv.setAttribute(
         "aria-hidden",
         "false"
     );
 
-    document.body.classList.add(
-        "cv-lock"
-    );
+    document.body.classList.add("cv-lock");
 }
 
 
-/* =========================================================
-   CV CLOSE
-   ========================================================= */
-
 function closeCV() {
 
-    const modal =
-        document.getElementById("executiveCV");
+    const cv = document.getElementById("executiveCV");
 
-    if (!modal) return;
+    if (!cv) return;
 
-    modal.classList.remove("active");
+    cv.classList.remove("active");
 
-    modal.setAttribute(
+    cv.setAttribute(
         "aria-hidden",
         "true"
     );
 
-    document.body.classList.remove(
-        "cv-lock"
-    );
+    document.body.classList.remove("cv-lock");
 }
 
 
-/* =========================================================
-   CLICK OUTSIDE
-   ========================================================= */
+/* CV ke bahar click = close */
 
 document.addEventListener(
     "click",
-    function(event) {
+    function(e) {
 
-        const modal =
+        const cv =
             document.getElementById("executiveCV");
 
         if (
-            modal &&
-            event.target === modal
+            cv &&
+            e.target === cv
         ) {
             closeCV();
         }
@@ -1318,15 +1410,13 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   ESC KEY
-   ========================================================= */
+/* ESC = close */
 
 document.addEventListener(
     "keydown",
-    function(event) {
+    function(e) {
 
-        if (event.key === "Escape") {
+        if (e.key === "Escape") {
             closeCV();
         }
 
@@ -1334,23 +1424,16 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   PRINT / SAVE AS PDF
-   ========================================================= */
+/* Print / Save PDF */
 
 function printCV() {
 
-    const modal =
+    const cv =
         document.getElementById("executiveCV");
 
-    if (!modal) return;
+    if (!cv) return;
 
-    modal.classList.add("active");
-
-    modal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
+    cv.classList.add("active");
 
     setTimeout(
         function() {
@@ -1361,6 +1444,7 @@ function printCV() {
 }
 
 </script>
+  
 </head>
 <head>
     <!-- Favicon Code -->
@@ -1443,537 +1527,16 @@ function printCV() {
                     <span>BOOK APPOINTMENT | Mon–Fri: 09:00 - 18:00 EST</span>
                 </a>
             </div>
-        </div>
-
-    <button type="button" class="cv-open-btn" onclick="openCV()">
+                 <button
+    type="button"
+    class="cv-open-btn"
+    onclick="openCV()"
+>
     <span class="cv-icon">✦</span>
     <span>VIEW EXECUTIVE CV</span>
 </button>
-        <!-- =========================================================
-     CV POPUP
-     ========================================================= -->
-        <div
-    class="cv-modal"
-    id="executiveCV"
-    aria-hidden="true"
->
-
-    <div
-        class="cv-paper"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="cvName"
-    >
-
-        <button
-            type="button"
-            class="cv-close"
-            onclick="closeCV()"
-            aria-label="Close CV"
-        >
-            ×
-        </button>
-
-
-        <!-- HEADER -->
-
-        <header class="cv-header">
-
-            <div class="cv-label">
-                Executive Curriculum Vitae
-            </div>
-
-            <h2
-                class="cv-name"
-                id="cvName"
-            >
-                ATEŞ KARHAN
-            </h2>
-
-            <div class="cv-position">
-                FOUNDER &amp; CEO |
-                LEAD ACTOR, SCREENWRITER &amp;
-                EXECUTIVE PRODUCER
-            </div>
-
-        </header>
-
-
-        <!-- CONTENT -->
-
-        <div class="cv-content">
-
-            <div class="cv-columns">
-
-
-                <!-- LEFT COLUMN -->
-
-                <main>
-
-
-                    <!-- EXECUTIVE PROFILE -->
-
-                    <section class="cv-section">
-
-                        <h3 class="cv-section-title">
-                            Executive Profile
-                        </h3>
-
-                        <p class="cv-text">
-                            Dynamic multi-industry executive, creative producer,
-                            and lead actor operating at the nexus of international
-                            media production, digital architecture, and corporate
-                            holding management. Directs strategic operations across
-                            global entertainment markets with a focus on high-end
-                            dramatic storytelling and cinematic content syndication.
-                        </p>
-
-                    </section>
-
-
-                    <!-- CORPORATE HOLDINGS -->
-
-                    <section class="cv-section">
-
-                        <h3 class="cv-section-title">
-                            Corporate Holdings &amp; Entities
-                        </h3>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                Ankara / Bodrum, Turkey
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                LMW Sovereign Holding
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Founder &amp; CEO
-                            </p>
-
-                        </div>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                Dubai, UAE
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                Serviger Holding Company
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Founder &amp; CEO
-                            </p>
-
-                        </div>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                New York / Turkey
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                Bare Music Production TR
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Founder &amp; CEO
-                            </p>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- CREATIVE CREDITS -->
-
-                    <section class="cv-section">
-
-                        <h3 class="cv-section-title">
-                            Creative &amp; Industry Credits
-                        </h3>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                Premium Drama Series
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                Kara Yemin (The Dark Oath)
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Creator, Lead Screenwriter, Executive Producer,
-                                and envisioned Lead Actor (Aras Demir).
-                                Complete with full pitch deck, pilot script,
-                                and original soundtrack (OST). Designed for
-                                network syndication (Ay Yapım target).
-                            </p>
-
-                        </div>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                Global Studio Consultancy
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                Spider-Man Franchise
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Contributed as part of the creative and consultancy
-                                team supporting international production development.
-                            </p>
-
-                        </div>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                Turkish Dizi Project
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                Shaidai
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Script Consultant &amp; Creator, structuring
-                                multi-layered narrative arcs for international
-                                content portfolios.
-                            </p>
-
-                        </div>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                Digital &amp; Product Ecosystems
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                Digital Portfolio
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Architected DERMIVA™ skincare line,
-                                Habib ullah Substack publication,
-                                and Kemal Marketplace via Workik platform.
-                                IMDb profile currently undergoing structured
-                                professional rebuild.
-                            </p>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- STRATEGIC GOALS -->
-
-                    <section class="cv-section">
-
-                        <h3 class="cv-section-title">
-                            Future Vision &amp; Strategic Goals
-                        </h3>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                Talent Management
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                Agency Alignment
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Securing elite representation via UK İletişim
-                                to bridge institutional production networks.
-                            </p>
-
-                        </div>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                Global Production
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                Global Dizi Production
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Greenlighting and scaling Kara Yemin for major
-                                streaming and broadcast networks across Turkey
-                                and international markets.
-                            </p>
-
-                        </div>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                Digital Expansion
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                Digital Ecosystem Expansion
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Launching verified, synchronized digital
-                                presences across Instagram, X (Twitter),
-                                LinkedIn, and establishing permanent IMDb
-                                credit compliance.
-                            </p>
-
-                        </div>
-
-
-                        <div class="cv-item">
-
-                            <div class="cv-item-date">
-                                International Growth
-                            </div>
-
-                            <h4 class="cv-item-title">
-                                International Mobility &amp; Growth
-                            </h4>
-
-                            <p class="cv-item-text">
-                                Expanding corporate holding operations across
-                                European, Middle Eastern, and North American
-                                hubs under LMW Sovereign and Serviger structures.
-                            </p>
-
-                        </div>
-
-                    </section>
-
-                </main>
-
-
-                <!-- RIGHT COLUMN -->
-
-                <aside>
-
-
-                    <!-- PROFESSIONAL DETAILS -->
-
-                    <section class="cv-section">
-
-                        <h3 class="cv-section-title">
-                            Professional Details
-                        </h3>
-
-
-                        <div class="cv-facts">
-
-                            <div class="cv-fact">
-
-                                <span class="cv-fact-label">
-                                    Professional Name
-                                </span>
-
-                                <strong class="cv-fact-value">
-                                    Ateş Karhan (Mehmet Salaar)
-                                </strong>
-
-                            </div>
-
-
-                            <div class="cv-fact">
-
-                                <span class="cv-fact-label">
-                                    Age
-                                </span>
-
-                                <strong class="cv-fact-value">
-                                    18
-                                </strong>
-
-                            </div>
-
-
-                            <div class="cv-fact">
-
-                                <span class="cv-fact-label">
-                                    Height
-                                </span>
-
-                                <strong class="cv-fact-value">
-                                    6.1 ft
-                                </strong>
-
-                            </div>
-
-
-                            <div class="cv-fact">
-
-                                <span class="cv-fact-label">
-                                    Weight
-                                </span>
-
-                                <strong class="cv-fact-value">
-                                    65 kg
-                                </strong>
-
-                            </div>
-
-
-                            <div class="cv-fact">
-
-                                <span class="cv-fact-label">
-                                    Base
-                                </span>
-
-                                <strong class="cv-fact-value">
-                                    Ankara &amp; Bodrum, TR /
-                                    Dubai / New York
-                                </strong>
-
-                            </div>
-
-
-                            <div class="cv-fact">
-
-                                <span class="cv-fact-label">
-                                    Web
-                                </span>
-
-                                <strong class="cv-fact-value">
-                                    lmw-sovereignholding.com
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- ACADEMIC -->
-
-                    <section class="cv-section">
-
-                        <h3 class="cv-section-title">
-                            Academic &amp; Core Foundations
-                        </h3>
-
-                        <p class="cv-text">
-
-                            <strong>
-                                Formal Education:
-                            </strong>
-
-                            Advanced Computer Science
-                            (BSc focus / Digital Systems
-                            &amp; Architecture).
-
-                        </p>
-
-
-                        <p
-                            class="cv-text"
-                            style="margin-top:13px;"
-                        >
-
-                            <strong>
-                                Physical &amp; Performance:
-                            </strong>
-
-                            Professional horse riding,
-                            advanced martial arts training.
-
-                        </p>
-
-
-                        <p
-                            class="cv-text"
-                            style="margin-top:13px;"
-                        >
-
-                            <strong>
-                                Linguistic Proficiency:
-                            </strong>
-
-                            Basic Turkish and international
-                            professional coordination.
-
-                        </p>
-
-                    </section>
-
-
-                    <!-- ACTIONS -->
-
-                    <section class="cv-section">
-
-                        <h3 class="cv-section-title">
-                            Official Portfolio
-                        </h3>
-
-                        <div class="cv-actions">
-
-                            <button
-                                type="button"
-                                class="cv-action"
-                                onclick="printCV()"
-                            >
-                                Print / Save PDF
-                            </button>
-
-                            <a
-                                href="booking.html"
-                                class="cv-action secondary"
-                            >
-                                Direct Contact
-                            </a>
-
-                        </div>
-
-                    </section>
-
-
-                    <p
-                        class="cv-text"
-                        style="font-size:.7rem;"
-                    >
-                        Official Portfolio &amp; Verification Hub:
-                        lmw-sovereignholding.com
-                    </p>
-
-                </aside>
-
-            </div>
-
         </div>
-
-    </div>
-
-</div>
-
-
-        
+   
     </section>
 
     <!-- ABOUT SECTION + GALLERY -->
