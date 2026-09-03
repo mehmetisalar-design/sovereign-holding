@@ -1354,54 +1354,70 @@
         });
     }
 }</script>
-    <script>
+  <script>
+
+/* =========================================================
+   CV OPEN
+   ========================================================= */
 
 function openCV() {
 
-    const cv = document.getElementById("executiveCV");
+    const modal =
+        document.getElementById("executiveCV");
 
-    if (!cv) return;
+    if (!modal) return;
 
-    cv.classList.add("active");
+    modal.classList.add("active");
 
-    cv.setAttribute(
+    modal.setAttribute(
         "aria-hidden",
         "false"
     );
 
-    document.body.classList.add("cv-lock");
+    document.body.classList.add(
+        "cv-lock"
+    );
 }
 
 
+/* =========================================================
+   CV CLOSE
+   ========================================================= */
+
 function closeCV() {
 
-    const cv = document.getElementById("executiveCV");
+    const modal =
+        document.getElementById("executiveCV");
 
-    if (!cv) return;
+    if (!modal) return;
 
-    cv.classList.remove("active");
+    modal.classList.remove("active");
 
-    cv.setAttribute(
+    modal.setAttribute(
         "aria-hidden",
         "true"
     );
 
-    document.body.classList.remove("cv-lock");
+    document.body.classList.remove(
+        "cv-lock"
+    );
 }
 
 
-/* CV ke bahar click = close */
+/* =========================================================
+   CLICK OUTSIDE
+   ========================================================= */
 
 document.addEventListener(
     "click",
-    function(e) {
+    function(event) {
 
-        const cv =
+        const modal =
             document.getElementById("executiveCV");
 
         if (
-            cv &&
-            e.target === cv
+            modal &&
+            event.target === modal
         ) {
             closeCV();
         }
@@ -1410,13 +1426,15 @@ document.addEventListener(
 );
 
 
-/* ESC = close */
+/* =========================================================
+   ESC KEY
+   ========================================================= */
 
 document.addEventListener(
     "keydown",
-    function(e) {
+    function(event) {
 
-        if (e.key === "Escape") {
+        if (event.key === "Escape") {
             closeCV();
         }
 
@@ -1424,16 +1442,23 @@ document.addEventListener(
 );
 
 
-/* Print / Save PDF */
+/* =========================================================
+   PRINT / SAVE AS PDF
+   ========================================================= */
 
 function printCV() {
 
-    const cv =
+    const modal =
         document.getElementById("executiveCV");
 
-    if (!cv) return;
+    if (!modal) return;
 
-    cv.classList.add("active");
+    modal.classList.add("active");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
 
     setTimeout(
         function() {
@@ -1525,17 +1550,539 @@ function printCV() {
                 <a href="booking.html" class="booking-time-btn">
                     <span class="status-dot"></span>
                     <span>BOOK APPOINTMENT | Mon–Fri: 09:00 - 18:00 EST</span>
+
+                    <button type="button" class="cv-open-btn" onclick="openCV()">
+    <span class="cv-icon">✦</span>
+    <span>VIEW EXECUTIVE CV</span>
+</button>
                 </a>
             </div>
                  
         </div>
     
     </section>
-<button type="button" class="cv-open-btn" onclick="openCV()">
-    <span class="cv-icon">✦</span>
-    <span>VIEW PROFESSIONAL CV</span>
-</button>
-    
+
+    <div
+    class="cv-modal"
+    id="executiveCV"
+    aria-hidden="true"
+>
+
+    <div
+        class="cv-paper"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cvName"
+    >
+
+        <button
+            type="button"
+            class="cv-close"
+            onclick="closeCV()"
+            aria-label="Close CV"
+        >
+            ×
+        </button>
+
+
+        <!-- HEADER -->
+
+        <header class="cv-header">
+
+            <div class="cv-label">
+                Executive Curriculum Vitae
+            </div>
+
+            <h2
+                class="cv-name"
+                id="cvName"
+            >
+                ATEŞ KARHAN
+            </h2>
+
+            <div class="cv-position">
+                FOUNDER &amp; CEO |
+                LEAD ACTOR, SCREENWRITER &amp;
+                EXECUTIVE PRODUCER
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <div class="cv-content">
+
+            <div class="cv-columns">
+
+
+                <!-- LEFT COLUMN -->
+
+                <main>
+
+
+                    <!-- EXECUTIVE PROFILE -->
+
+                    <section class="cv-section">
+
+                        <h3 class="cv-section-title">
+                            Executive Profile
+                        </h3>
+
+                        <p class="cv-text">
+                            Dynamic multi-industry executive, creative producer,
+                            and lead actor operating at the nexus of international
+                            media production, digital architecture, and corporate
+                            holding management. Directs strategic operations across
+                            global entertainment markets with a focus on high-end
+                            dramatic storytelling and cinematic content syndication.
+                        </p>
+
+                    </section>
+
+
+                    <!-- CORPORATE HOLDINGS -->
+
+                    <section class="cv-section">
+
+                        <h3 class="cv-section-title">
+                            Corporate Holdings &amp; Entities
+                        </h3>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                Ankara / Bodrum, Turkey
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                LMW Sovereign Holding
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Founder &amp; CEO
+                            </p>
+
+                        </div>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                Dubai, UAE
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                Serviger Holding Company
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Founder &amp; CEO
+                            </p>
+
+                        </div>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                New York / Turkey
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                Bare Music Production TR
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Founder &amp; CEO
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- CREATIVE CREDITS -->
+
+                    <section class="cv-section">
+
+                        <h3 class="cv-section-title">
+                            Creative &amp; Industry Credits
+                        </h3>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                Premium Drama Series
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                Kara Yemin (The Dark Oath)
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Creator, Lead Screenwriter, Executive Producer,
+                                and envisioned Lead Actor (Aras Demir).
+                                Complete with full pitch deck, pilot script,
+                                and original soundtrack (OST). Designed for
+                                network syndication (Ay Yapım target).
+                            </p>
+
+                        </div>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                Global Studio Consultancy
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                Spider-Man Franchise
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Contributed as part of the creative and consultancy
+                                team supporting international production development.
+                            </p>
+
+                        </div>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                Turkish Dizi Project
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                Shaidai
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Script Consultant &amp; Creator, structuring
+                                multi-layered narrative arcs for international
+                                content portfolios.
+                            </p>
+
+                        </div>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                Digital &amp; Product Ecosystems
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                Digital Portfolio
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Architected DERMIVA™ skincare line,
+                                Habib ullah Substack publication,
+                                and Kemal Marketplace via Workik platform.
+                                IMDb profile currently undergoing structured
+                                professional rebuild.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- STRATEGIC GOALS -->
+
+                    <section class="cv-section">
+
+                        <h3 class="cv-section-title">
+                            Future Vision &amp; Strategic Goals
+                        </h3>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                Talent Management
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                Agency Alignment
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Securing elite representation via UK İletişim
+                                to bridge institutional production networks.
+                            </p>
+
+                        </div>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                Global Production
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                Global Dizi Production
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Greenlighting and scaling Kara Yemin for major
+                                streaming and broadcast networks across Turkey
+                                and international markets.
+                            </p>
+
+                        </div>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                Digital Expansion
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                Digital Ecosystem Expansion
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Launching verified, synchronized digital
+                                presences across Instagram, X (Twitter),
+                                LinkedIn, and establishing permanent IMDb
+                                credit compliance.
+                            </p>
+
+                        </div>
+
+
+                        <div class="cv-item">
+
+                            <div class="cv-item-date">
+                                International Growth
+                            </div>
+
+                            <h4 class="cv-item-title">
+                                International Mobility &amp; Growth
+                            </h4>
+
+                            <p class="cv-item-text">
+                                Expanding corporate holding operations across
+                                European, Middle Eastern, and North American
+                                hubs under LMW Sovereign and Serviger structures.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                </main>
+
+
+                <!-- RIGHT COLUMN -->
+
+                <aside>
+
+
+                    <!-- PROFESSIONAL DETAILS -->
+
+                    <section class="cv-section">
+
+                        <h3 class="cv-section-title">
+                            Professional Details
+                        </h3>
+
+
+                        <div class="cv-facts">
+
+                            <div class="cv-fact">
+
+                                <span class="cv-fact-label">
+                                    Professional Name
+                                </span>
+
+                                <strong class="cv-fact-value">
+                                    Ateş Karhan (Mehmet Salaar)
+                                </strong>
+
+                            </div>
+
+
+                            <div class="cv-fact">
+
+                                <span class="cv-fact-label">
+                                    Age
+                                </span>
+
+                                <strong class="cv-fact-value">
+                                    18
+                                </strong>
+
+                            </div>
+
+
+                            <div class="cv-fact">
+
+                                <span class="cv-fact-label">
+                                    Height
+                                </span>
+
+                                <strong class="cv-fact-value">
+                                    6.1 ft
+                                </strong>
+
+                            </div>
+
+
+                            <div class="cv-fact">
+
+                                <span class="cv-fact-label">
+                                    Weight
+                                </span>
+
+                                <strong class="cv-fact-value">
+                                    65 kg
+                                </strong>
+
+                            </div>
+
+
+                            <div class="cv-fact">
+
+                                <span class="cv-fact-label">
+                                    Base
+                                </span>
+
+                                <strong class="cv-fact-value">
+                                    Ankara &amp; Bodrum, TR /
+                                    Dubai / New York
+                                </strong>
+
+                            </div>
+
+
+                            <div class="cv-fact">
+
+                                <span class="cv-fact-label">
+                                    Web
+                                </span>
+
+                                <strong class="cv-fact-value">
+                                    lmw-sovereignholding.com
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ACADEMIC -->
+
+                    <section class="cv-section">
+
+                        <h3 class="cv-section-title">
+                            Academic &amp; Core Foundations
+                        </h3>
+
+                        <p class="cv-text">
+
+                            <strong>
+                                Formal Education:
+                            </strong>
+
+                            Advanced Computer Science
+                            (BSc focus / Digital Systems
+                            &amp; Architecture).
+
+                        </p>
+
+
+                        <p
+                            class="cv-text"
+                            style="margin-top:13px;"
+                        >
+
+                            <strong>
+                                Physical &amp; Performance:
+                            </strong>
+
+                            Professional horse riding,
+                            advanced martial arts training.
+
+                        </p>
+
+
+                        <p
+                            class="cv-text"
+                            style="margin-top:13px;"
+                        >
+
+                            <strong>
+                                Linguistic Proficiency:
+                            </strong>
+
+                            Basic Turkish and international
+                            professional coordination.
+
+                        </p>
+
+                    </section>
+
+
+                    <!-- ACTIONS -->
+
+                    <section class="cv-section">
+
+                        <h3 class="cv-section-title">
+                            Official Portfolio
+                        </h3>
+
+                        <div class="cv-actions">
+
+                            <button
+                                type="button"
+                                class="cv-action"
+                                onclick="printCV()"
+                            >
+                                Print / Save PDF
+                            </button>
+
+                            <a
+                                href="booking.html"
+                                class="cv-action secondary"
+                            >
+                                Direct Contact
+                            </a>
+
+                        </div>
+
+                    </section>
+
+
+                    <p
+                        class="cv-text"
+                        style="font-size:.7rem;"
+                    >
+                        Official Portfolio &amp; Verification Hub:
+                        lmw-sovereignholding.com
+                    </p>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
     <!-- ABOUT SECTION + GALLERY -->
     
     <section id="about">
@@ -1698,7 +2245,7 @@ function printCV() {
     <section id="holdings" style="background: var(--bg-card);">
         <div class="sec-head">
             <div class="sec-tag">Corporate Operations</div>
-            <h2 class="sec-heading">Sovereign Holding Holdings</h2>
+            <h2 class="sec-heading">Lmw-Sovereign Holding</h2>
         </div>
         <div class="holdings-grid">
             <div class="holding-item">
