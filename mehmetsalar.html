@@ -712,7 +712,6 @@
 
 
 
-    
 /* =========================================================
    CV BUTTON
    ========================================================= */
@@ -1338,7 +1337,23 @@
     }
 }
 
+* {
+    cursor: none;
+}
 
+        .cv-modal,
+.cv-modal *,
+.cv-open-btn,
+.cv-close,
+.cv-action {
+    cursor: default !important;
+}
+
+.cv-open-btn,
+.cv-close,
+.cv-action {
+    cursor: pointer !important;
+}
     </style>
 
     <script >function scrollToPosition(position) {
@@ -1354,70 +1369,54 @@
         });
     }
 }</script>
-  <script>
-
-/* =========================================================
-   CV OPEN
-   ========================================================= */
+ <script>
 
 function openCV() {
 
-    const modal =
-        document.getElementById("executiveCV");
+    const cv = document.getElementById("executiveCV");
 
-    if (!modal) return;
+    if (!cv) return;
 
-    modal.classList.add("active");
+    cv.classList.add("active");
 
-    modal.setAttribute(
+    cv.setAttribute(
         "aria-hidden",
         "false"
     );
 
-    document.body.classList.add(
-        "cv-lock"
-    );
+    document.body.classList.add("cv-lock");
 }
 
 
-/* =========================================================
-   CV CLOSE
-   ========================================================= */
-
 function closeCV() {
 
-    const modal =
-        document.getElementById("executiveCV");
+    const cv = document.getElementById("executiveCV");
 
-    if (!modal) return;
+    if (!cv) return;
 
-    modal.classList.remove("active");
+    cv.classList.remove("active");
 
-    modal.setAttribute(
+    cv.setAttribute(
         "aria-hidden",
         "true"
     );
 
-    document.body.classList.remove(
-        "cv-lock"
-    );
+    document.body.classList.remove("cv-lock");
 }
 
 
-/* =========================================================
-   CLICK OUTSIDE
-   ========================================================= */
+/* CV ke bahar click = close */
 
 document.addEventListener(
     "click",
-    function(event) {
+    function(e) {
 
-        const modal =
+        const cv =
             document.getElementById("executiveCV");
 
         if (
-            modal &&
-            event.target === modal
+            cv &&
+            e.target === cv
         ) {
             closeCV();
         }
@@ -1426,15 +1425,13 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   ESC KEY
-   ========================================================= */
+/* ESC = close */
 
 document.addEventListener(
     "keydown",
-    function(event) {
+    function(e) {
 
-        if (event.key === "Escape") {
+        if (e.key === "Escape") {
             closeCV();
         }
 
@@ -1442,23 +1439,16 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   PRINT / SAVE AS PDF
-   ========================================================= */
+/* Print / Save PDF */
 
 function printCV() {
 
-    const modal =
+    const cv =
         document.getElementById("executiveCV");
 
-    if (!modal) return;
+    if (!cv) return;
 
-    modal.classList.add("active");
-
-    modal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
+    cv.classList.add("active");
 
     setTimeout(
         function() {
@@ -1552,7 +1542,11 @@ function printCV() {
                     <span>BOOK APPOINTMENT | Mon–Fri: 09:00 - 18:00 EST</span>
 </a>
                 <a>
-                    <button type="button" class="cv-open-btn" onclick="openCV()">
+                    <button
+    type="button"
+    class="cv-open-btn"
+    onclick="openCV()"
+>
     <span class="cv-icon">✦</span>
     <span>VIEW EXECUTIVE CV</span>
 </button>
