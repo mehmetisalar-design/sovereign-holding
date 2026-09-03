@@ -1355,6 +1355,388 @@
     cursor: pointer !important;
 }
     </style>
+    <style>
+
+/* ================= GALLERY BUTTON ================= */
+
+.gallery-open-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    padding:14px 25px;
+
+    background:#fff;
+    color:#171717;
+
+    border:1px solid #d9d1c2;
+    border-radius:4px;
+
+    font-family:inherit;
+    font-size:10px;
+    font-weight:600;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    cursor:pointer !important;
+
+    transition:.3s ease;
+}
+
+.gallery-open-btn span{
+    color:#b89752;
+}
+
+.gallery-open-btn:hover{
+    background:#171717;
+    color:#fff;
+    border-color:#171717;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+
+
+/* ================= POPUP ================= */
+
+.gallery-popup{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100vw;
+    height:100vh;
+
+    z-index:999999;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(12,12,12,.58);
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    cursor:default !important;
+}
+
+.gallery-popup.active{
+    display:flex;
+
+    animation:galleryFade .3s ease;
+}
+
+@keyframes galleryFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+/* ================= POPUP BOX ================= */
+
+.gallery-popup-box{
+
+    position:relative;
+
+    width:min(1400px,96vw);
+    height:min(900px,94vh);
+
+    background:#fff;
+
+    border-radius:7px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(184,151,82,.4);
+
+    box-shadow:
+        0 35px 120px rgba(0,0,0,.3);
+
+    animation:galleryBox .4s cubic-bezier(.16,1,.3,1);
+}
+
+@keyframes galleryBox{
+
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.985);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+
+/* ================= IFRAME ================= */
+
+.gallery-popup-box iframe{
+
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    border:0;
+
+    background:#fff;
+}
+
+
+/* ================= CLOSE ================= */
+
+.gallery-popup-close{
+
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    z-index:20;
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:1px solid #d8d1c5;
+
+    background:rgba(255,255,255,.96);
+
+    color:#171717;
+
+    font-size:24px;
+
+    cursor:pointer !important;
+
+    transition:.3s ease;
+}
+
+.gallery-popup-close:hover{
+
+    background:#171717;
+
+    color:#fff;
+
+    border-color:#171717;
+
+    transform:rotate(90deg);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    .gallery-popup{
+        padding:7px;
+    }
+
+    .gallery-popup-box{
+
+        width:98vw;
+        height:96vh;
+
+        border-radius:5px;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+/* ================= OPEN GALLERY ================= */
+
+function openGallery(){
+
+    const popup =
+        document.getElementById("galleryPopup");
+
+    const frame =
+        document.getElementById("galleryFrame");
+
+    if(!popup || !frame) return;
+
+    /*
+       gallery.html must be in the same folder
+       as your main website HTML.
+    */
+
+    if(
+        frame.getAttribute("src") ===
+        "about:blank"
+    ){
+
+        frame.src = "gallery.html";
+
+    }
+
+    popup.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* ================= CLOSE GALLERY ================= */
+
+function closeGallery(){
+
+    const popup =
+        document.getElementById("galleryPopup");
+
+    if(!popup) return;
+
+    popup.classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+
+/* ================= CLICK OUTSIDE ================= */
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        const popup =
+            document.getElementById("galleryPopup");
+
+        if(
+            popup &&
+            e.target === popup
+        ){
+
+            closeGallery();
+
+        }
+
+    }
+);
+
+
+/* ================= ESC ================= */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Escape"){
+
+            closeGallery();
+
+        }
+
+    }
+);
+
+</script>
+3. Ab gallery.html ki complete coding
+
+Isko alag file ke naam se save karo:
+
+gallery.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Ateş Karhan — Gallery</title>
+
+
+<style>
+
+:root{
+
+    --black:#171717;
+    --gold:#b89752;
+    --muted:#777;
+    --line:#e5dfd4;
+    --soft:#faf9f6;
+
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    margin:0;
+
+    background:#fff;
+
+    color:var(--black);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+/* ================= HEADER ================= */
+
+.gallery-header{
+
+    padding:65px 7vw 48px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff 0%,
+            #faf9f5 100%
+        );
+
+    border-bottom:1px solid var(--line);
+
+}
+
+.gallery-label{
+
+    margin-bottom:10px;
+
+    color:var(--gold);
+
+    font-size:9px;
+
+    font-weight:600;
+</style>
 
     <script >function scrollToPosition(position) {
     if (position === 'top') {
@@ -2132,6 +2514,29 @@ function printCV() {
 </button>
             </a>
     </section>
+
+    <div class="gallery-popup" id="galleryPopup">
+
+    <div class="gallery-popup-box">
+
+        <button
+            type="button"
+            class="gallery-popup-close"
+            onclick="closeGallery()"
+            aria-label="Close Gallery"
+        >
+            ×
+        </button>
+
+        <iframe
+            id="galleryFrame"
+            src="about:blank"
+            title="Ateş Karhan Gallery"
+        ></iframe>
+
+    </div>
+
+</div>
 
     <!-- CAREER SECTION + GALLERY -->
     <section id="career" style="background: var(--bg-card);">
