@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Local configuration and databases
+.env
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# Customer/private uploads
+uploads/**
+!uploads/.gitkeep
+
+# Logs and editor files
+*.log
+.vscode/
+.idea/
